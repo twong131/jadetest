@@ -1,47 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Commission PDF Links</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title Here</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file here, if applicable -->
 </head>
 <body>
-    <h1>Commission PDF Links</h1>
-    <ul>
-        <!-- List of PDF links with checkboxes and file status -->
-        <li>
-            <input type="checkbox" class="pdf-checkbox" data-filename="link_to_pdf1.pdf"> <!-- Checkbox for deletion -->
-            <a href="link_to_pdf1.pdf">PDF 1</a> (Status: Active)
-        </li>
-        <li>
-            <input type="checkbox" class="pdf-checkbox" data-filename="link_to_pdf2.pdf"> <!-- Checkbox for deletion -->
-            <a href="link_to_pdf2.pdf">PDF 2</a> (Status: Expired)
-        </li>
-        <!-- Add more PDF links here -->
-    </ul>
+    <header>
+        <h1>Your Website Header</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <button id="delete-button">Delete</button> <!-- Delete button -->
+    <main>
+        <section>
+            <h2>Section 1</h2>
+            <p>This is the content of section 1.</p>
+        </section>
 
-    <script>
-        document.getElementById("delete-button").addEventListener("click", function () {
-            const checkboxes = document.querySelectorAll('.pdf-checkbox:checked');
-            const filenamesToDelete = Array.from(checkboxes).map(checkbox => checkbox.getAttribute('data-filename'));
+        <section>
+            <h2>Section 2</h2>
+            <p>This is the content of section 2.</p>
+        </section>
+    </main>
 
-            // Send an AJAX request to the server to delete the selected files
-            if (filenamesToDelete.length > 0) {
-                const xhr = new XMLHttpRequest();
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Handle the response from the server (e.g., update the UI)
-                        alert("Selected files deleted successfully!");
-                        window.location.reload(); // Refresh the page or update the UI as needed
-                    }
-                };
-                xhr.open("POST", "delete_files.php", true); // Replace with your server-side script
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send("filenames=" + JSON.stringify(filenamesToDelete));
-            } else {
-                alert("Please select at least one file to delete.");
-            }
-        });
-    </script>
+    <footer>
+        <p>&copy; 2023 Your Website Name</p>
+    </footer>
 </body>
 </html>
